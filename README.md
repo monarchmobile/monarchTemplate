@@ -11,7 +11,7 @@ rails new <app_name> --database=postgresql -m ~/sites/startup_template/template.
 
 
 // instruction to share this and other apps with team members //
-git fetch
+git fetch <br />
 git merge orgin/master
 
 git checkout -b whatever
