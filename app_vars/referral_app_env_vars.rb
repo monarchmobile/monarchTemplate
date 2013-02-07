@@ -1,0 +1,1 @@
+heroku config:add GMAIL_USERNAME=monarchmobile2@gmail.com GMAIL_PASSWORD=Butterfly790 SECRET_TOKEN=07c0f8528e385d16ce1cda7ea2d7a1ed1a4aa883c8e6990c94ecc45e52e47dabfd271066991647fc37c47842856488b423253f3feb40dc0469ef5c5676651be2 MAILER_HOST=http://fathomless-beach-9344.herokuapp.com

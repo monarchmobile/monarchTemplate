@@ -1,0 +1,20 @@
+<div class="header_container">
+   	<div class="thousand_wide_container ">
+        <!-- Start of the nav bar content --> 
+      <% if current_user %>
+        <ul class="left_side nav_bar">
+          <%= link_to content_tag(:li, "#{current_user.fullname}"), user_path(current_user.last_name) %>
+        </ul>
+        <ul class="middle nav_bar"> 
+        </ul>
+      <% end %>
+        <ul class="right_side nav_bar">
+          <% if current_user %>
+            <%= link_to content_tag(:li, "Logout"), logout_path %>
+          <% else %>
+            <%= link_to content_tag(:li, "Sign Up"), signup_path %>
+            <%= link_to content_tag(:li, "Sign In"), login_path %>
+          <% end %>
+        </ul>    
+    </div>
+</div>
