@@ -12,16 +12,16 @@ rails new <app_name> --database=postgresql -m ~/sites/startup_template/template.
 
 // instruction to share this and other apps with team members // <br />
 git fetch <br />
-git merge orgin/master < n/>
+git merge orgin/master <br /> <br />
 
-git checkout -b whatever
----- add changes --
-git add .
-git commit -m “first commit”
-git push origin whatever
+git checkout -b whatever <br />
+---- add changes -- <br />
+  git add . <br />
+  git commit -m “first commit” <br />
+  git push origin whatever <br /> <br />
 
-git checkout master
-git fetch
-git merge origin/master
-git merge whatever
-git push
+git checkout master <br />
+git fetch <br />
+git merge origin/master <br />
+git merge whatever <br />
+git push <br />
