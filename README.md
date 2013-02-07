@@ -9,7 +9,7 @@ Create a new Rails application as normal, specifying the path to the template sc
 
 rails new <app_name> --database=postgresql -m ~/sites/startup_template/template.rb
 
-
+<br />
 // instruction to share this and other apps with team members // <br />
 git fetch <br />
 git merge orgin/master <br /> <br />
