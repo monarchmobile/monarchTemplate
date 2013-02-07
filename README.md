@@ -14,14 +14,14 @@ rails new <app_name> --database=postgresql -m ~/sites/startup_template/template.
 git fetch <br />
 git merge orgin/master <br /> <br />
 
-git checkout -b <branch_name> <br />
+git checkout -b branch_name <br />
 ---- add changes -- <br />
   git add . <br />
   git commit -m “first commit” <br />
-  git push origin  <branch_name> <br /> <br />
+  git push origin  branch_name <br /> <br />
 
 git checkout master <br />
 git fetch <br />
 git merge origin/master <br />
-git merge  <branch_name> <br />
+git merge  branch_name <br />
 git push <br />
