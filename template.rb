@@ -120,7 +120,7 @@ production:
 ## .gitignore ##
 ################
   
-run "cp ~/sites/startup_template/gitignore_file ~/sites/#{@app_name}/.gitignore"
+run "cp ~/sites/start_up_files/gitignore_file ~/sites/#{@app_name}/.gitignore"
 
 #################################
 ## add secret_token to app.yml ##
@@ -133,7 +133,7 @@ secret_token = SecureRandom.hex(64)
 append_to_file 'config/application.yml', "\n\nSECRET_TOKEN: '#{secret_token}'"
 
 # create app_vars file for app
-pathname = "~/sites/startup_template/app_vars/#{@app_name}_env_vars.rb"
+pathname = "~/sites/start_up_files/app_vars/#{@app_name}_env_vars.rb"
 if pathname
   run "rm #{pathname}"
 end
@@ -161,7 +161,7 @@ inject_into_file 'app/assets/stylesheets/application.css',
 
 # prepare client_side_validations
 generate "client_side_validations:install"
-run "cp ~/sites/startup_template/config/initializers/client_side_validations.rb ~/sites/#{@app_name}/config/initializers/client_side_validations.rb"
+run "cp ~/sites/start_up_files/config/initializers/client_side_validations.rb ~/sites/#{@app_name}/config/initializers/client_side_validations.rb"
 
 # prepare Uploader
 generate "uploader image"
@@ -223,11 +223,11 @@ if yes?("Should we set up the User model now?(y/n)")
   gsub_file "config/routes.rb", 'get "sessions/new"', ""
 
  ## controllers/sessions_controller.rb
-  run "cp ~/sites/startup_template/controllers/sessions_controller.rb ~/sites/#{@app_name}/app/controllers/sessions_controller.rb"
+  run "cp ~/sites/start_up_files/controllers/sessions_controller.rb ~/sites/#{@app_name}/app/controllers/sessions_controller.rb"
 
   gsub_file "app/controllers/sessions_controller.rb", "Model_Name", "#{model.capitalize}"
 ## views/sessions/new.html.erb
-  run "cp ~/sites/startup_template/views/sessions/new.html.erb ~/sites/#{@app_name}/app/views/sessions/new.html.erb"
+  run "cp ~/sites/start_up_files/views/sessions/new.html.erb ~/sites/#{@app_name}/app/views/sessions/new.html.erb"
 
 #######################################
 ## Create password_resets_controller ##
@@ -237,13 +237,13 @@ if yes?("Should we set up the User model now?(y/n)")
   gsub_file "config/routes.rb", 'get "password_resets/new"', ""
 
 ## controllers/password_resets_controller.rb
-  run "cp ~/sites/startup_template/controllers/password_resets_controller.rb ~/sites/#{@app_name}/app/controllers/password_resets_controller.rb"
+  run "cp ~/sites/start_up_files/controllers/password_resets_controller.rb ~/sites/#{@app_name}/app/controllers/password_resets_controller.rb"
 
 ## views/password_resets/new.html.erb
-  run "cp ~/sites/startup_template/views/password_resets/new.html.erb ~/sites/#{@app_name}/app/views/password_resets/new.html.erb"
+  run "cp ~/sites/start_up_files/views/password_resets/new.html.erb ~/sites/#{@app_name}/app/views/password_resets/new.html.erb"
 
 ## views/password_resets/edit.html.erb
-  run "cp ~/sites/startup_template/views/password_resets/edit.html.erb ~/sites/#{@app_name}/app/views/password_resets/edit.html.erb"
+  run "cp ~/sites/start_up_files/views/password_resets/edit.html.erb ~/sites/#{@app_name}/app/views/password_resets/edit.html.erb"
 
 #######################################
 ## Create User Mailer ##
@@ -251,9 +251,9 @@ if yes?("Should we set up the User model now?(y/n)")
 
 generate "mailer user_mailer password_reset"
 ## mailer/user_mailer.rb
-  run "cp ~/sites/startup_template/mailers/user_mailer.rb ~/sites/#{@app_name}/app/mailers/user_mailer.rb"
+  run "cp ~/sites/start_up_files/mailers/user_mailer.rb ~/sites/#{@app_name}/app/mailers/user_mailer.rb"
 ## user_mailer/password_reset.text.erb
-  run "cp ~/sites/startup_template/views/user_mailer/password_reset.text.erb ~/sites/#{@app_name}/app/views/user_mailer/password_reset.text.erb"
+  run "cp ~/sites/start_up_files/views/user_mailer/password_reset.text.erb ~/sites/#{@app_name}/app/views/user_mailer/password_reset.text.erb"
 
 #######################################
 ## User files ##
@@ -261,8 +261,8 @@ generate "mailer user_mailer password_reset"
 
 ## views/password_resets/edit.html.erb
   run "mkdir app/views/shared"
-  run "cp ~/sites/startup_template/views/shared/_errors.html.erb ~/sites/#{@app_name}/app/views/shared/_errors.html.erb"
-  run "cp ~/sites/startup_template/views/shared/_authentication.html.erb ~/sites/#{@app_name}/app/views/shared/_authentication.html.erb"
+  run "cp ~/sites/start_up_files/views/shared/_errors.html.erb ~/sites/#{@app_name}/app/views/shared/_errors.html.erb"
+  run "cp ~/sites/start_up_files/views/shared/_authentication.html.erb ~/sites/#{@app_name}/app/views/shared/_authentication.html.erb"
 
   run "rm app/views/#{model}s/_form.html.erb"
   run "touch app/views/#{model}s/_form.html.erb"
@@ -279,7 +279,7 @@ generate "mailer user_mailer password_reset"
 ## application_helper.rb##
 ##########################
 
-  run "cp ~/sites/startup_template/helpers/application_helper.rb ~/sites/#{@app_name}/app/helpers/application_helper.rb"
+  run "cp ~/sites/start_up_files/helpers/application_helper.rb ~/sites/#{@app_name}/app/helpers/application_helper.rb"
 
 ########################################
 ## Config.routes.rb -- Dynamic content##
@@ -364,7 +364,7 @@ if yes?("Should we create the StaticPagesController now? (y/n)")
     File.open(file_name, 'w') {|file| file.puts ret}
   end
 
-  run "cp ~/sites/startup_template/views/shared/_header.html.erb ~/sites/#{@app_name}/app/views/shared/_header.html.erb"
+  run "cp ~/sites/start_up_files/views/shared/_header.html.erb ~/sites/#{@app_name}/app/views/shared/_header.html.erb"
   
   methods.reverse.each do |method| 
     if method == "profile"
@@ -381,12 +381,12 @@ if yes?("Should we create the StaticPagesController now? (y/n)")
   inject_into_file "app/views/layouts/application.html.erb", "<%= render 'shared/header' %>",
     :after => "<body>"
 
-  run "cp ~/sites/startup_template/assets/stylesheets/controller.css.scss ~/sites/#{@app_name}/app/assets/stylesheets/#{controller_name.downcase}.css.scss"
+  run "cp ~/sites/start_up_files/assets/stylesheets/controller.css.scss ~/sites/#{@app_name}/app/assets/stylesheets/#{controller_name.downcase}.css.scss"
   
 end
 
 # scaffolds.css.scss **********
-run "cp ~/sites/startup_template/assets/stylesheets/scaffolds.css.scss ~/sites/#{@app_name}/app/assets/stylesheets/scaffolds.css.scss"
+run "cp ~/sites/start_up_files/assets/stylesheets/scaffolds.css.scss ~/sites/#{@app_name}/app/assets/stylesheets/scaffolds.css.scss"
 
 git :init
 git add: "." 
