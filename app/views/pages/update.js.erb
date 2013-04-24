@@ -1,0 +1,8 @@
+ $(".pageStates").show()
+ 
+ $("#published_pages").html("<%= j render @published_pages %>").prepend("<h3>Published Pages (<%= @published_pages.count %>)</h3>")
+ 
+ $("#scheduled_pages").html("<%= j render @scheduled_pages %>").prepend("<h3>Scheduled Pages (<%= @scheduled_pages.count %>)</h3>")
+
+ $("#draft_pages").html("<%= j render @draft_pages %>").prepend("<h3>Draft Pages (<%= @draft_pages.count %>)</h3>")
+

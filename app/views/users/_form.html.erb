@@ -1,0 +1,11 @@
+<%= form_for @user, :validate => true do |f| %>  
+  <%= render 'shared/errors', object: @user %>
+
+
+<%= render 'users/choose_role', f: f %>
+
+  <div class="actions">
+    <%= f.submit "Update Profile" %>
+  </div>
+<% end %>
+<div class="separator_box"></div>

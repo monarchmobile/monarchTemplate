@@ -1,0 +1,50 @@
+ 
+  <%= form_for(@blog) do |f| %> 
+    <%= render 'shared/errors', object: @blog %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body, :class => 'ckeditor' %>
+    </div>
+    <div class="field">
+      <%= f.label :tag_names, "Tags" %>
+      <%= f.text_field :tag_names %>
+    </div>
+
+    <div class="field schedule_fields">
+      <%= f.label :starts_at %>
+      <% if @blog.starts_at %>
+        <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Blog).starts_at(@blog.id) %>
+      <% else %>
+        <%= f.text_field :starts_at %>
+      <% end %>
+    </div>
+    <div class="field schedule_fields">
+      <%= f.label :ends_at %>
+      <% if @blog.ends_at %>
+        <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Blog).ends_at(@blog.id) %>
+      <% else %>
+        <%= f.text_field :ends_at %>
+      <% end %>
+    </div>
+
+    <div class="field schedule_fields">
+      <%= f.label :current_state %>
+      <%= collection_select(:blog, :current_state, Status.all, :id, :status_name, option = { :selected => @blog.current_state}) %>
+    </div>
+
+    <% if can? :edit, Blog %>
+      <div class="field schedule_out">
+        <%= f.label :featured, "Feature in Sidebar?" %><br />
+        <%= f.select(:featured, [["featured blog", true], ["non-featured blog", false]]) %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

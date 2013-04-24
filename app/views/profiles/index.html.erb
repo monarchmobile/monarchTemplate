@@ -1,0 +1,26 @@
+
+	<h1>Profile</h1> 
+	<div class="column_title pages">
+		<%= content_tag :p, link_to("+ New", new_profile_path), class: "new_instance_button" %>
+		
+		
+	</div>
+
+	<ul class="model_table">
+		<% @profiles.each do |profile| %>
+			<li>
+				<ul class="instance_detail">
+					<% hidden_attributes = %w[id created_at updated_at] %>
+					<% profile.attributes.each do |attr_name, attr_value| %>
+						<% if attr_value && !hidden_attributes.include?(attr_name) %>
+							<%= content_tag :li, attr_name, class: "profile_title" %>
+							<%= content_tag :li, attr_value, class: "title" %><br />
+						<% end %>
+					<% end %>
+
+					<%= render "shared/crud_btns_without_view", object: profile %>
+				</ul>
+				<br class="clear">
+			</li>
+		<% end %>
+	</ul>

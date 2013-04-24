@@ -1,0 +1,16 @@
+ <%= form_for(@supermodel) do |f| %>
+    <%= render 'shared/errors', object: @supermodel %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name,:readonly => true %>
+    </div>
+
+     <div class="field">
+      <%= f.label :visible %><br />
+      <%= f.check_box :visible %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

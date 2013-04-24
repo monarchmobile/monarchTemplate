@@ -1,0 +1,21 @@
+
+<ul class="model_table">
+	<li>
+		<ul class="instance_detail">
+			<%= content_tag :li, @role.name, class:"name" %><br />
+			<%= content_tag :div, raw(@role.description), class: "view_all" %>
+			<ul class="crud_buttons">
+
+				<%= content_tag :li, link_to("edit", edit_role_path(@role)), class:"edit" %>
+				
+				<%= content_tag :li, link_to("delete", role_path(@role), :confirm => "are you sure?", :method => :delete ), class:"delete" %>
+			</ul>
+		</ul>
+		<br class="clear">
+	</li>
+	<br />
+
+	<%= content_tag :li, link_to('View All Roles', roles_path) %>
+</ul>
+
+

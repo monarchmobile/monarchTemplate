@@ -1,0 +1,33 @@
+<% update_list %> 
+<div class="dash_main">
+
+	<div class="l_col">
+		<div class="dash_nav">
+
+			<%= content_tag :h3, "Dynamic Tables", class: "dynamic_tables super_tables" %>
+			<ul class= "dynamic_tables_list">
+				<%= render 'static_pages/table_list', :models_list => @active_models %>
+			</ul>
+
+			<%= content_tag :h3, "Static Tables", class: "static_tables super_tables" %>
+			<ul class= "static_tables_list hidden">
+				<%= render 'static_pages/table_list', :models_list => @static_models %>
+			</ul>
+			
+		</div>
+	</div>
+
+		<div class="m_col">
+			<h2>Welcome to your dashboard!</h2>
+			<p>We've customized this dashboard for you, and it will be the hub that helps you manage your web application.</p>
+		</div>
+
+		<div class="r_col">
+
+			<div class="news">
+				<h3>News</h3>
+				<p>We don't have anything new to share right now, but from time to time this area of the dashboard contains marketing tips, new websites, and other stuff that we think our clients might find helpful or interesting.</p>
+			</div>
+
+		</div>
+</div>

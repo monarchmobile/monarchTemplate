@@ -1,0 +1,12 @@
+<br class="clear"/>
+<div class="blog_partial_container">
+<% @blogs_partial.each do |blog| %>
+	<%= content_tag_for :div, blog, class: "blog_in_partial" do %>
+		<%= content_tag :li, blog.starts_at, class: "blog_title"  %>
+
+		<%= content_tag :li, raw(blog.title), class: "blog_title"  %>
+		<%= content_tag :li, raw(blog.body), class: "blog_body"  %>
+	<% end %>
+<% end %>
+<br class="clear"/>
+</div>

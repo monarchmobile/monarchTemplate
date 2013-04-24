@@ -1,0 +1,2 @@
+$("#users_waiting_to_be_approved").html("<%= j render @users_waiting_to_be_approved %>").prepend("<h3>Users Waiting To Be Approved (<%=@users_waiting_to_be_approved.count%>)")
+$("#approved_users").html("<%= j render @approved_users %>").prepend("<h3>Approved Users(<%=@approved_users.count%>)")

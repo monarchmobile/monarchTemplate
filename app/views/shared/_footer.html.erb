@@ -1,0 +1,13 @@
+<div class="full-width" id="footer">
+	<div class="container">
+		<ul class="right">
+		  
+	      <% if current_user %>
+	          <%= content_tag :li, link_to("Logout", destroy_user_session_path, :method => :delete) %>
+	      <% else %>
+	          <%= content_tag :li, link_to("Sign In", new_user_session_path) %>
+	      <% end %>
+    	</ul>
+		
+	</div>
+</div>	

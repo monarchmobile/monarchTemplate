@@ -1,0 +1,12 @@
+<br class="clear"/>
+<div class="announcement_partial_container">
+<% @announcements_partial.each do |announcement| %>
+	<%= content_tag_for :div, announcement, class: "announcement_in_partial" do %>
+		<%= content_tag :li, announcement.starts_at, class: "announcement_title"  %>
+
+		<%= content_tag :li, raw(announcement.title), class: "announcement_title"  %>
+		<%= content_tag :li, raw(announcement.message), class: "announcement_message"  %>
+	<% end %>
+<% end %>
+<br class="clear"/>
+</div>

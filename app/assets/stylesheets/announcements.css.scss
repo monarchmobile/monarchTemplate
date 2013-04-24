@@ -1,0 +1,32 @@
+
+// announcement_partial
+.announcement_partial_container {
+  width: 500px;
+height: 50px;
+top: 57px;
+position: absolute;
+background: red;
+color: #fff;
+text-align: center;
+border-radius: 5px;
+webkit-border-radius: 5px;
+moz-border-radius: 5px;
+-moz-box-shadow: 0px 0px 5px #ccc;
+-webkit-box-shadow: 0px 0px 5px #ccc;
+box-shadow: 0px 0px 5px #ccc;
+border: 2px solid gray;
+}
+
+.announcement_in_partial {
+  border-bottom: 2px dashed rgb(250, 233, 180);
+  padding: 5px;
+
+  .announcement_title {
+
+  }
+
+  .announcement_body {
+
+  }
+
+}

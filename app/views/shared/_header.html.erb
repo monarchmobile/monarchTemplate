@@ -1,0 +1,31 @@
+<div class="full-width" id="top-nav">
+  <div class="container">
+    <ul class="right"> 
+      <% if user_signed_in? %>
+            <%= content_tag :li, link_to("Dashboard", dashboard_path) if can? :manage, @page %>
+            <%= link_to content_tag(:li, "#{current_user.fullname}"), edit_user_registration_path %>
+      <% end %>
+    </ul>
+     
+    <ul class="left">
+      <% @pages = Describe.new(Page).published.order("position ASC") %>
+      <% top_link = Link.find_by_location("top_link").id %>
+      <% @pages.each do |page| %>
+        <% if page.link_ids.include?(top_link) %>
+          <%= content_tag :li, link_to(page.title, [page]) %>
+        <% end %>
+      <% end %>
+       
+    </ul>
+    
+   <ul class="right">
+      <% if current_user %>
+          <%= content_tag :li, link_to("Logout", destroy_user_session_path, :method => :delete) %>
+      <% else %>
+          <%= content_tag :li, link_to("Create an Account", new_user_registration_path) %>
+          <%= content_tag :li, link_to("Sign In", new_user_session_path) %>
+      <% end %>
+    </ul>
+    <br class="clear"/>
+  </div>
+</div>

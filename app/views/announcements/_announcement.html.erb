@@ -1,0 +1,34 @@
+<%= content_tag_for :li, announcement do %>
+	<%= content_tag :span, handle_if_published(announcement), class: "handle" %>
+	<ul class="instance_detail">
+		<div class="announcement_details">
+			<%= content_tag :li, announcement.title, class: "title"  %>
+			<!-- dynamic form for picking announcement status -->
+			<%= form_for announcement, :html => {:class => 'announcement_ajax_edit'}, :url => {controller: "announcements", action: "announcement_status", id: announcement.id }, remote: true do |a| %>
+					<%= collection_select(:announcement, :current_state, Status.all, :id, :status_name, option = { :selected => announcement.current_state}) %>
+			<% end %>
+
+			<%= content_tag :li, position_if_published(announcement), class: "page_position" %>
+			<!-- dynamic form for picking starts_at -->
+			<%= form_for announcement, :html => {:class=> "announcement_ajax_starts_at"}, :url => {controller: "announcements", action: "announcement_starts_at", id: announcement.id }, :params => [:announcement], remote: true do |a| %>
+				<%= a.text_field :starts_at, :id => "message_#{announcement.id}_starts_at", :class => "announcement_message_starts_at" %>
+			<% end %>
+			<%= content_tag :li, Describe.new(Announcement).starts_at(announcement.id), class: "starts_at_date at_date #{check_if_draft(announcement)}", id: "message_#{announcement.id}_starts_at_text"  %>
+
+			<!-- dynamic form for picking ends_at -->
+			<%= form_for announcement, :html => {:class=> "announcement_ajax_ends_at"}, :url => {controller: "announcements", action: "announcement_ends_at", id: announcement.id }, :params => [:announcement], remote: true do |a| %>
+				<%= a.text_field :ends_at, :id => "message_#{announcement.id}_start_at", :class => "announcement_message_ends_at" %>
+			<% end %>
+			<%= content_tag :li, Describe.new(Announcement).ends_at(announcement.id), class: "ends_at_date at_date #{check_if_draft(announcement)}", id: "message_#{announcement.id}_ends_at_text"  %>
+
+		</div>
+		
+		<%= render "shared/crud_btns_without_view", object: announcement %>
+		
+		<div class="announcement_message">
+			<%= content_tag :li, announcement.message, class: "message"  %>
+		</div>
+	</ul>
+	<br class="clear"/>
+
+<% end %>

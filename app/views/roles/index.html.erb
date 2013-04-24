@@ -1,0 +1,22 @@
+
+	<h1>Roles</h1> 
+	<div class="column_title pages">
+		<%= content_tag :p, link_to("+ New", new_role_path), class: "new_instance_button" %>
+		<ul>
+			<li class="title">Name</li>
+		</ul>
+		
+	</div>
+
+	<ul class="model_table">
+		<% @roles.each do |role| %>
+			<li>
+				<ul class="instance_detail">
+					<%= content_tag :li, role.name, class:"name" %>
+					
+					<%= render "shared/crud_btns", object: role %>
+				</ul>
+				<br class="clear">
+			</li>
+		<% end %>
+	</ul>

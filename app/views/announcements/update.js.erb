@@ -1,0 +1,3 @@
+$("#published_announcements").html("<%= j render @published_announcements %>").prepend("<h3>Published Announcements (<%= @published_announcements.count %>)")
+$("#scheduled_announcements").html("<%= j render @scheduled_announcements %>").prepend("<h3>Scheduled Announcements (<%= @scheduled_announcements.count %>)")
+$("#draft_announcements").html("<%= j render @draft_announcements %>").prepend("<h3>Draft Announcements (<%= @draft_announcements.count %>)")

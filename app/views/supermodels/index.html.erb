@@ -1,0 +1,14 @@
+<%= content_tag :h1, "Application Models" %>
+
+
+<ul class="model_table supermodelStates" id="visible_supermodels" data-update-url="<%= sort_supermodels_url %>">
+	<%= content_tag :h3, "Tables (#{@visible_supermodels.count})" %>
+		<%= render @visible_supermodels %>
+</ul>
+
+<ul class="model_table supermodelStates" id="hidden_supermodels" data-update-url="<%= sort_supermodels_url %>">
+	<%= content_tag :h3, "Hidden Tables (#{ @hidden_supermodels.count})" %>
+	<%= render @hidden_supermodels %>
+</ul>
+
+

@@ -1,0 +1,13 @@
+<%= form_for @link do |f| %> 
+	<%= render 'shared/errors', object: @link %> 
+	<div class="field">
+		<%= f.label :location %>
+		<%= f.text_field :location %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+
+
+<% end %>

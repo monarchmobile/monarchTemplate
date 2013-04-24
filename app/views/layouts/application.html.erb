@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= content_tag :title, "#{Rails.application.class.to_s.split("::").first}" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>          
+  <% if "#{params[:controller]}##{params[:action]}" == "piggybak/orders#submit" -%>
+      <%= javascript_include_tag "piggybak/piggybak-application" %>
+  <% end -%>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <%= render "shared/header" %>
+  <%= render "shared/announcements" %>
+
+    <div class="container main">
+      <div class="logo">
+        <%= image_tag 'logo.png',size: "250x250" if image_tag 'logo.png' %>
+      </div>
+
+      <div class="main_col">
+        <div class="error">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :p, msg, id: "flash_#{name}" %>
+          <% end %>
+        </div>
+
+        <%= yield %>
+        <br class="clear"/>
+      </div> 
+      <br class="clear"/>
+    </div>
+    
+  <%= render "shared/footer" %>
+
+</body>
+</html>

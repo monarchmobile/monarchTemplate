@@ -1,0 +1,3 @@
+$("#published_events").html("<%= j render @published_events %>").prepend("<h3>Published Events (<%= @published_events.count %>)")
+$("#scheduled_events").html("<%= j render @scheduled_events %>").prepend("<h3>Scheduled Events (<%= @scheduled_events.count %>)")
+$("#draft_events").html("<%= j render @draft_events %>").prepend("<h3>Draft Events (<%= @draft_events.count %>)")

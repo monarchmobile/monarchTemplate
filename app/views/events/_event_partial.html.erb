@@ -1,0 +1,12 @@
+<br class="clear"/>
+<div class="event_partial_container">
+<% @events_partial.each do |event| %>
+	<%= content_tag_for :div, event, class: "event_in_partial" do %>
+		<%= content_tag :li, event.starts_at, class: "event_title"  %>
+
+		<%= content_tag :li, raw(event.title), class: "event_title"  %>
+		<%= content_tag :li, raw(event.body), class: "event_body"  %>
+	<% end %>
+<% end %>
+<br class="clear"/>
+</div>

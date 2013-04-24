@@ -1,0 +1,8 @@
+<% if comment.body %>
+  <div class="comment">
+    <p class="author"><b><%= comment.name %></b>said:</p>
+    <%= content_tag :p, comment.body %>
+    <%= link_to 'Edit | ', [@blog, comment]  if can? :edit, comment %>
+    <%= link_to 'Delete', [@blog, comment], :confirm => 'Are you sure?', :method => :delete if can? :edit, comment %>
+  </div>
+<% end %>

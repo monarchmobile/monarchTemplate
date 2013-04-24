@@ -1,0 +1,26 @@
+
+	<h1>Partials</h1> 
+	<div class="column_title pages">
+		<%= content_tag :p, link_to("+ New", new_partial_path), class: "new_instance_button" %>
+		<ul>
+			<li class="title">Name</li>
+		</ul>
+		
+	</div>
+
+	<ul class="model_table">
+		<% @partials.each do |partial| %>
+			<li>
+				<ul class="instance_detail">
+					<%= content_tag :li, partial.name, class:"name" %>
+					
+					<ul class="crud_buttons">
+						<%= content_tag :li, link_to("edit", edit_partial_path(partial)), class:"edit" %>
+						<%= content_tag :li, link_to("view", "#{partial.name.downcase}_partial"), class:"view" %>
+						<%= content_tag :li, link_to("delete", partial_path(partial), :confirm => "are you sure?", :method => :delete ), class:"delete" %>
+					</ul>
+				</ul>
+				<br class="clear">
+			</li>
+		<% end %>
+	</ul>

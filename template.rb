@@ -1,4 +1,4 @@
-
+ 
 # 1. remove public/index.html & create file for private settings
 run "rm public/index.html"
 run "touch application.yml"

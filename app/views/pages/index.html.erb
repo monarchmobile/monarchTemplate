@@ -1,0 +1,28 @@
+ 
+	<h1>Pages</h1> 
+	<div class="column_title pages">
+		<%= content_tag :p, link_to("+ New", new_page_path), class: "new_instance_button" %>
+		<ul>
+			<li class="title">Title</li>
+			<li>Index</li>
+			<li>Status</li>
+		</ul>
+		
+	</div>
+
+	<ul class="model_table pageStates" id="published_pages" data-update-url="<%= sort_pages_url %>">
+		<%= content_tag :h3, "Published Pages (#{@published_pages.count})" %>
+		<%= render @published_pages %>
+	</ul>
+
+	<ul class="model_table pageStates" id="scheduled_pages" data-update-url="<%= sort_pages_url %>">
+		<%= content_tag :h3, "Scheduled Pages (#{@scheduled_pages.count})" %>
+		<%= render @scheduled_pages %>
+	</ul>
+
+	<ul class="model_table pageStates" id="draft_pages" data-update-url="<%= sort_pages_url %>">
+		<%= content_tag :h3, "Draft Pages (#{@draft_pages.count})" %>
+		<%= render @draft_pages %>
+	</ul>
+	
+	

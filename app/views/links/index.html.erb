@@ -1,0 +1,23 @@
+
+	<h1>Links</h1> 
+	<div class="column_title pages">
+		<%= content_tag :p, link_to("+ New", new_link_path), class: "new_instance_button" %>
+		<ul>
+			<li class="title">Location</li>
+		</ul>
+		
+	</div>
+
+	<ul class="model_table">
+		<% @links.each do |link| %>
+			<li>
+				<ul class="instance_detail">
+					<%= content_tag :li, link.location, class:"name" %>
+					
+					<%= render "shared/crud_btns", object: link %>
+
+				</ul>
+				<br class="clear">
+			</li>
+		<% end %>
+	</ul>

@@ -1,0 +1,20 @@
+<ul class="model_table">
+	<li>
+		<ul class="instance_detail">
+			<% @profile.attributes.each do |attr_name, attr_value| %>
+					<% if attr_value  && !hidden_attributes.include?(attr_name) %>
+						<%= content_tag :li, attr_name, class: "profile_title" %>
+						<%= content_tag :li, attr_value, class: "title" %><br />
+				<% end %>
+			
+			<ul class="crud_buttons">
+				<%= content_tag :li, link_to("edit", edit_profile_path(@profile)), class:"edit" %>	
+				<%= content_tag :li, link_to("delete", profile_path(@profile), :confirm => "are you sure?", :method => :delete ), class:"delete" %>
+			</ul>
+		</ul>
+		<br class="clear">
+	</li>
+	<br />
+
+	<%= content_tag :li, link_to('View All Profiles', profiles_path) %>
+</ul>

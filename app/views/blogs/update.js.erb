@@ -1,0 +1,3 @@
+$("#published_blogs").html("<%= j render @published_blogs %>").prepend("<h3>Published Blogs (<%= @published_blogs.count %>)")
+$("#scheduled_blogs").html("<%= j render @scheduled_blogs %>").prepend("<h3>Scheduled Blogs (<%= @scheduled_blogs.count %>)")
+$("#draft_blogs").html("<%= j render @draft_blogs %>").prepend("<h3>Draft Blogs (<%= @draft_blogs.count %>)")

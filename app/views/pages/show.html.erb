@@ -1,0 +1,14 @@
+<%= content_tag :h1, @page.title %>
+
+<% @partials.each do |partial| %>
+	<% if @page.partial_ids.include?(partial.id) %>
+		<%= render "#{partial.name.downcase}s/#{partial.name.downcase}_partial" %>
+	<% end %>
+<% end %>
+
+<%= content_tag :div, raw(@page.content) %>
+
+<%= link_to 'Edit | ', edit_page_path(@page) if can? :edit, @page %>
+<%= link_to 'Back', pages_path if can? :edit, @page %>
+<%= link_to '| Destroy', @page, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, @page%>
+

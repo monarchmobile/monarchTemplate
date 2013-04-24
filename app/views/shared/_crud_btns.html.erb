@@ -1,0 +1,6 @@
+<ul class="crud_buttons">
+ 	<% klass = object.class.name.downcase %>
+	<%= content_tag :li, link_to("edit", "#{klass}s/#{object.id}/edit"), class: "edit" %>
+	<%= content_tag :li, link_to("view", "#{klass}s/#{object.id}"), class: "view" %>
+	<%= content_tag :li, link_to("delete", "#{klass}s/#{object.id}", :confirm => "are you sure?", :method => :delete ), class: "delete" %>
+</ul>

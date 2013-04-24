@@ -1,0 +1,5 @@
+announcement #<%= @announcement.id %>
+
+<%= @announcement.message %><br />
+Announced on: <%= @announcement.starts_at.strftime("%B %d, %Y") %><br />
+Expires on: <%= @announcement.ends_at.strftime("%B %d, %Y") %><br />

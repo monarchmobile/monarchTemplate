@@ -1,0 +1,8 @@
+<%= content_tag :h1, @event.title %>
+
+<%= content_tag :div, raw(@event.body) %>
+
+<%= link_to 'Edit | ', edit_event_path(@event) if can? :edit, @event %>
+<%= link_to 'Back', events_path if can? :edit, @event %>
+<%= link_to '| Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, @event%>
+

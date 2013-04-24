@@ -1,0 +1,27 @@
+  
+<h1>Announcements</h1>
+<div class="column_title pages">
+	<%= content_tag :p, link_to("+ New", new_announcement_path), class: "new_instance_button" %>
+	<ul>
+		<li class="title">Title</li>
+		<li>Status</li>
+		<li class="in announce_in">Go Live</li>
+		<li class="out">Expires On</li>
+	</ul>
+	
+</div>
+
+<ul class="model_table announcementStatus" id="published_announcements" data-update-url="<%= sort_announcements_url %>">
+	<%= content_tag :h3, "Published Announcements (#{@published_announcements.count})" %>
+	<%= render @published_announcements %>
+</ul>
+
+<ul class="model_table announcementStatus" id="scheduled_announcements" data-update-url="<%= sort_announcements_url %>">
+	<%= content_tag :h3, "Schedule Announcements (#{@scheduled_announcements.count})" %>
+	<%= render @scheduled_announcements %>
+</ul>
+
+<ul class="model_table announcementStatus" id="draft_announcements" data-update-url="<%= sort_announcements_url %>">
+	<%= content_tag :h3, "Draft Announcements (#{@draft_announcements.count})" %>
+	<%= render @draft_announcements %>
+</ul>

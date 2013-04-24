@@ -1,0 +1,15 @@
+<%= f.fields_for :role do |builder| %>
+	<div class="field">
+		<%= hidden_field_tag "user[role_ids][]", nil %>
+	    <% if current_user %>
+		    <% if current_user.role? :Admin %>
+		    	<% @admin_roles.each do |role| %>
+			      <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id), id: dom_id(role) %>  
+		      	<%= label_tag dom_id(role), role.name %><br> 
+			    <% end %>
+		    <% end %>
+	    
+	    <% end %>
+	</div>
+
+<% end %>

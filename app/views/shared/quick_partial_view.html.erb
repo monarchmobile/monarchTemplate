@@ -1,0 +1,9 @@
+<%= content_tag :h2, "#{@model_name} Partial", class: "partial_title" %>
+<%= content_tag :h3, "If you would like this partial to show up on a specific page, click on that page link below and check '#{@model_name}' under 'Partials to be displayed'", class: "partial_description" %>
+<%= content_tag :h3, "Page Links", class: "partial_description" %>
+<% Page.all.each do |page| %>
+	<%= content_tag :div, link_to( "#{page.title} page", "pages/#{page.slug}/edit"), class: "partial_link" %>
+<% end %>
+
+<br class="clear" />
+<%= render "#{@model_name.downcase}s/#{@model_name.downcase}_partial" %>

@@ -1,0 +1,27 @@
+  
+<h1>Blogs</h1>
+<div class="column_title pages">
+	<%= content_tag :p, link_to("+ New", new_blog_path), class: "new_instance_button" %>
+	<ul>
+		<li class="title">Title</li>
+		<li>Status</li>
+		<li class="in announce_in">Go Live</li>
+		<li class="out">Expires On</li>
+	</ul>
+	
+</div>
+
+<ul class="model_table blogStatus" id="published_blogs" data-update-url="<%= sort_blogs_url %>">
+	<%= content_tag :h3, "Published blogs (#{@published_blogs.count})" %>
+	<%= render @published_blogs %>
+</ul>
+
+<ul class="model_table blogStatus" id="scheduled_blogs" data-update-url="<%= sort_blogs_url %>">
+	<%= content_tag :h3, "Schedule blogs (#{@scheduled_blogs.count})" %>
+	<%= render @scheduled_blogs %>
+</ul>
+
+<ul class="model_table blogStatus" id="draft_blogs" data-update-url="<%= sort_blogs_url %>">
+	<%= content_tag :h3, "Draft blogs (#{@draft_blogs.count})" %>
+	<%= render @draft_blogs %>
+</ul>

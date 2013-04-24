@@ -1,0 +1,30 @@
+<%= content_tag_for :li, page do %>
+	
+	<%= content_tag :span, handle_if_published(page), class: "handle" %>
+
+	<ul class="instance_detail">
+		<%= content_tag :li, page.title, class:"title" %>
+
+		<%= form_for page, :html => {:class => 'page_ajax_edit'}, url: { :controller => "pages", :action => "status", id: page.id}, remote: true do |a| %>
+			<%= collection_select(:page, :current_state, Status.all, :id, :status_name, option = { :selected => page.current_state}) %>
+		<% end %>
+		
+		<%= content_tag :li, position_if_published(page), class: "page_position" %>
+		
+		<%= form_for page, :html => {:class => 'page_ajax_edit'}, remote: true do |p| %>
+			<%= hidden_field_tag "page[link_ids][]", nil %>
+			<div class="horizontal_links_container">
+		    <% Link.all.each do |link| %>
+		  			<div class="horizontal_links">
+							<%= check_box_tag "page[link_ids][]", link.id, page.link_ids.include?(link.id), id: dom_id(link), class: "page_link_checkbox hidden" %> 
+							<%= content_tag :div, link.location, class: "page_link_location index_form_btns #{green_if_checked(page, link.id)}" %>
+		  			</div>
+	      <% end %>
+	    </div>
+		<% end %>
+
+		<%= render "shared/crud_btns", object: page %>
+	</ul>
+	<br class="clear">
+
+<% end %>

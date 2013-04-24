@@ -1,0 +1,46 @@
+ 
+  <%= form_for(@event) do |f| %> 
+    <%= render 'shared/errors', object: @event %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body, :class => 'ckeditor' %>
+    </div>
+
+    <div class="field schedule_fields">
+      <%= f.label :starts_at %>
+      <% if @event.starts_at %>
+        <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Event).starts_at(@event.id) %>
+      <% else %>
+        <%= f.text_field :starts_at %>
+      <% end %>
+    </div>
+    <div class="field schedule_fields">
+      <%= f.label :ends_at %>
+      <% if @event.ends_at %>
+        <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Event).ends_at(event.id) %>
+      <% else %>
+        <%= f.text_field :ends_at %>
+      <% end %>
+    </div>
+
+    <div class="field schedule_fields">
+      <%= f.label :current_state %>
+      <%= collection_select(:event, :current_state, Status.all, :id, :status_name, option = { :selected => @event.current_state}) %>
+    </div>
+
+    <% if can? :edit, Event %>
+      <div class="field schedule_out">
+        <%= f.label :featured, "Feature in Sidebar?" %><br />
+        <%= f.select(:featured, [["featured event", true], ["non-featured event", false]]) %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

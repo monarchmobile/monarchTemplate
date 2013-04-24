@@ -1,0 +1,19 @@
+
+<ul class="model_table">
+	<li>
+		<ul class="instance_detail">
+			<%= content_tag :li, @partial.name, class:"name" %><br />
+			<ul class="crud_buttons">
+
+				<%= content_tag :li, link_to("edit", edit_partial_path(@partial)), class:"edit" %>
+				<%= content_tag :li, link_to("delete", partial_path(@partial), :confirm => "are you sure?", :method => :delete ), class:"delete" %>
+			</ul>
+		</ul>
+		<br class="clear">
+	</li>
+	<br />
+
+	<%= content_tag :li, link_to('View All Partials', partials_path) %>
+</ul>
+
+

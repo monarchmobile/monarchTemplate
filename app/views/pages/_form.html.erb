@@ -1,0 +1,41 @@
+<%= form_for @page, :html => {:class => 'page_form_edit'} do |f| %> 
+	<%= render 'shared/errors', object: @page %> 
+	<div class="field">
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<%= f.label :content %>
+		<%= f.text_area :content, :class => 'ckeditor' %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :current_state %>
+		<%= collection_select(:page, :current_state, Status.all, :id, :status_name, option = { :selected => @page.current_state}) %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :link_ids, "Links to this page" %>><br />
+  	<%= hidden_field_tag "page[link_ids][]", nil %>
+    <% @links.each do |link| %>
+      <%= check_box_tag "page[link_ids][]", link.id, @page.link_ids.include?(link.id), id: dom_id(link) %>  
+    	<%= label_tag dom_id(link), link.location, class: "check_box_label" %><br> 
+    <% end %>
+	</div>
+
+	<div class="field">
+		<%= f.label :partial_ids, "Partials to be displayed" %><br />
+		<%= hidden_field_tag "page[partial_ids][]", nil %>
+		<% @partials.each do |partial| %>
+				<%= check_box_tag "page[partial_ids][]", partial.id, @page.partial_ids.include?(partial.id), id: dom_id(partial) %>
+				<%= label_tag dom_id(partial), partial.name, class: "check_box_label" %><br>
+		<% end %>
+
+	</div>
+	   
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+
+
+<% end %>
