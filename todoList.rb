@@ -187,6 +187,17 @@ get announcements to work
 
 4/22/13 1:03pm
  config added gem
+
+announcment form
+choose state
+draft 
+schedule 
+publish
+
+current state below message, and not date choices yet
+if schedule, show date, other than than, hide dates
+change to "shedule" in drop down
+"update" button should change to select dropdown choices
  
 
 

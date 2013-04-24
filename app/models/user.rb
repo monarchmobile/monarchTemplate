@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -16,11 +16,6 @@ class User < ActiveRecord::Base
   def self.approved
     where(approved: true)
   end
-
-  # grab all users
-    # approved is true
-    # group by roles.name
-    # order by roles.name
 
   def self.not_approved
     where(approved: false)

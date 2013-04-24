@@ -106,7 +106,7 @@
 				 		}
 			 	}
 
-			 	function determine_params() 
+			 	function determine_params()  
 				{
 				 		switch (document.domain) {
 					 		case "www.amazon.com":
