@@ -34,3 +34,10 @@ git merge origin/master <br />
 git merge  branch_name <br />
 git push <br />
 >>>>>>> origin/master
+
+// add to gemfile //
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
