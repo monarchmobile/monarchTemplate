@@ -35,7 +35,7 @@ git merge  branch_name <br />
 git push <br />
 >>>>>>> origin/master
 
-// add to gemfile //
+// add to gemfile //<br />
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
