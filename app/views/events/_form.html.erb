@@ -1,4 +1,15 @@
- 
+<script>
+$(document).ready(function() { 
+
+  $(".edit_event select").change(function() {
+    cur_value = $(this).children('option:selected').text();
+  })
+
+  $("#scheduled_status").hide()
+
+})
+
+</script> 
   <%= form_for(@event) do |f| %> 
     <%= render 'shared/errors', object: @event %>
     <div class="field">
@@ -10,28 +21,30 @@
       <%= f.label :body %><br />
       <%= f.text_area :body, :class => 'ckeditor' %>
     </div>
-
-    <div class="field schedule_fields">
-      <%= f.label :starts_at %>
-      <% if @event.starts_at %>
-        <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Event).starts_at(@event.id) %>
-      <% else %>
-        <%= f.text_field :starts_at %>
-      <% end %>
-    </div>
-    <div class="field schedule_fields">
-      <%= f.label :ends_at %>
-      <% if @event.ends_at %>
-        <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Event).ends_at(event.id) %>
-      <% else %>
-        <%= f.text_field :ends_at %>
-      <% end %>
-    </div>
-
-    <div class="field schedule_fields">
+     <div class="field schedule_fields">
       <%= f.label :current_state %>
       <%= collection_select(:event, :current_state, Status.all, :id, :status_name, option = { :selected => @event.current_state}) %>
     </div>
+    <div class="schedule_container">
+      <div class="field schedule_fields">
+        <%= f.label :starts_at %>
+        <% if @event.starts_at %>
+          <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Event).starts_at(@event.id) %>
+        <% else %>
+          <%= f.text_field :starts_at %>
+        <% end %>
+      </div>
+      <div class="field schedule_fields">
+        <%= f.label :ends_at %>
+        <% if @event.ends_at %>
+          <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Event).ends_at(event.id) %>
+        <% else %>
+          <%= f.text_field :ends_at %>
+        <% end %>
+      </div>
+    </div>
+
+   
 
     <% if can? :edit, Event %>
       <div class="field schedule_out">

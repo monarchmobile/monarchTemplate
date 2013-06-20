@@ -40,6 +40,6 @@ class Blog < ActiveRecord::Base
   end
 
   def set_position
-    self.position = (Blog.published.count)+1
+    self.position = (Describe.new(Blog).published.count)+1
   end	
 end

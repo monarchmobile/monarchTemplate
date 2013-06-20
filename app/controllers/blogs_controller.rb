@@ -3,6 +3,7 @@
   layout :resolve_layout
 
   def index
+    reset_current_state(Blog)
     all_blog_states
     @blogs = Blog.all
 
@@ -24,7 +25,8 @@
   end
 
   def blog_partial
-    @blogs_partial = Describe.new(Blog).partial
+    reset_current_state(Blog)
+    @blogs_partial = Describe.new(Blog).partial.published
     @model_name = "Blog"
     render 'shared/quick_partial_view', model_name: @model_name
   end
@@ -48,6 +50,7 @@
   def create
     authorize! :create, @blog
     @blog = Blog.new(params[:blog])
+    @blog.starts_at = params[:blog][:starts_at].blank? ? Date.today : params[:blog][:starts_at]
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'blog was successfully created.' }

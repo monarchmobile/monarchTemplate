@@ -19,6 +19,6 @@ class Event < ActiveRecord::Base
   end
 
   def set_position
-    self.position = (Event.published.count)+1
+    self.position = (Describe.new(Event).published.count)+1
   end	
 end

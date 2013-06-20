@@ -1,4 +1,15 @@
- 
+<script>
+$(document).ready(function() { 
+
+  $(".edit_blog select").change(function() {
+    cur_value = $(this).children('option:selected').text();
+  })
+
+  $("#scheduled_status").hide()
+
+})
+
+</script> 
   <%= form_for(@blog) do |f| %> 
     <%= render 'shared/errors', object: @blog %>
     <div class="field">
@@ -14,28 +25,29 @@
       <%= f.label :tag_names, "Tags" %>
       <%= f.text_field :tag_names %>
     </div>
-
-    <div class="field schedule_fields">
-      <%= f.label :starts_at %>
-      <% if @blog.starts_at %>
-        <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Blog).starts_at(@blog.id) %>
-      <% else %>
-        <%= f.text_field :starts_at %>
-      <% end %>
-    </div>
-    <div class="field schedule_fields">
-      <%= f.label :ends_at %>
-      <% if @blog.ends_at %>
-        <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Blog).ends_at(@blog.id) %>
-      <% else %>
-        <%= f.text_field :ends_at %>
-      <% end %>
-    </div>
-
     <div class="field schedule_fields">
       <%= f.label :current_state %>
       <%= collection_select(:blog, :current_state, Status.all, :id, :status_name, option = { :selected => @blog.current_state}) %>
     </div>
+    <div class="schedule_container">
+      <div class="field schedule_fields">
+        <%= f.label :starts_at %>
+        <% if @blog.starts_at %>
+          <%= f.text_field :starts_at, :class => "datepicker", :value => Describe.new(Blog).starts_at(@blog.id) %>
+        <% else %>
+          <%= f.text_field :starts_at %>
+        <% end %>
+      </div>
+      <div class="field schedule_fields">
+        <%= f.label :ends_at %>
+        <% if @blog.ends_at %>
+          <%= f.text_field :ends_at, :class => "datepicker", :value => Describe.new(Blog).ends_at(@blog.id) %>
+        <% else %>
+          <%= f.text_field :ends_at %>
+        <% end %>
+      </div>
+    </div>
+    
 
     <% if can? :edit, Blog %>
       <div class="field schedule_out">

@@ -7,7 +7,6 @@ class LinksController < ApplicationController
 	    end
 	end
 
-
 	def create 
 		@link = Link.new(params[:link])
 	    respond_to do |format|

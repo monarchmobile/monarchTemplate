@@ -20,7 +20,9 @@
 			<%= form_for blog, :html => {:class=> "blog_ajax_ends_at"}, :url => {controller: "blogs", action: "blog_ends_at", id: blog.id }, remote: true do |a| %>
 				<%= a.text_field :ends_at, :id => "message_#{blog.id}_start_at", :class => "blog_message_ends_at" %>
 			<% end %>
-			<%= content_tag :li, Describe.new(Blog).ends_at(blog.id), class: "ends_at_date at_date #{check_if_draft(blog)}", id: "message_#{blog.id}_ends_at_text"  %>
+			<% unless blog.ends_at.blank? %>
+				<%= content_tag :li, Describe.new(Blog).ends_at(blog.id), class: "ends_at_date at_date #{check_if_draft(blog)}", id: "message_#{blog.id}_ends_at_text"  %>
+			<% end %>
 		</div>
 		
 		<%= render "shared/crud_btns", object: blog %>

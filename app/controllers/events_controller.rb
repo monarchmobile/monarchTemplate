@@ -3,6 +3,7 @@
   layout :resolve_layout
 
   def index
+    reset_current_state(Event)
     all_event_states
     @events = Event.all
 
@@ -22,7 +23,8 @@
   end
 
   def event_partial
-    @events_partial = Describe.new(Event).partial
+    reset_current_state(Event)
+    @events_partial = Describe.new(Event).partial.published
     @model_name = "Event"
     render 'shared/quick_partial_view', model_name: @model_name
   end
@@ -46,6 +48,8 @@
   def create
     authorize! :create, @event
     @event = Event.new(params[:event])
+    @event.starts_at = params[:event][:starts_at].blank? ? Date.today : params[:event][:starts_at]
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'event was successfully created.' }

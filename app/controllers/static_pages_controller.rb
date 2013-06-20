@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
 	def dashboard
 		@pages = Page.all
-		static_array = %w[Link Partial Profile Role Supermodel]
+		static_array = %w[Partial Profile Role Supermodel]
 		@active_models = Supermodel.where("visible = true AND name NOT IN (?)", static_array).order("name ASC")
 		@static_models = Supermodel.where("visible = true AND name IN (?)", static_array).order("name ASC")
 	end

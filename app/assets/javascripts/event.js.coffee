@@ -39,6 +39,17 @@ jQuery ->
 	$("body").delegate ".event_ajax_edit select", "change", ->
 		$(this).closest("form").submit()
 
-# _form
+	# _form
 	$("#event_starts_at").datepicker(dateFormat: "dd-mm-yy")
 	$("#event_ends_at").datepicker(dateFormat: "dd-mm-yy")
+
+	$("body").delegate "select#event_current_state", "change", ->
+		if $(this).val() == "1"
+			$("input[type=submit]").val("Save Draft")
+			$(".schedule_container").hide()
+		if $(this).val() == "2"
+			$("input[type=submit]").val("Schedule For")
+			$(".schedule_container").show()
+		else if $(this).val() == "3"
+			$("input[type=submit]").val("Publish Now")
+			$(".schedule_container").hide()

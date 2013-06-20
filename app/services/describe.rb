@@ -25,13 +25,21 @@ class Describe
   end
 
   def starts_at(id)
-  	object = @model.find(id)
-    object.starts_at.strftime("%B %d, %Y")
+      object = @model.find(id)
+      if !object.starts_at.blank?
+        object.starts_at.strftime("%B %d, %Y")
+      else
+        Date.today
+      end
   end
 
   def ends_at(id)
-  	object = @model.find(id)
-    object.ends_at.strftime("%B %d, %Y")
+    object = @model.find(id)
+    if !object.ends_at.blank?
+        object.ends_at.strftime("%B %d, %Y")
+      else
+        Date.today
+      end
   end
 
   def partial

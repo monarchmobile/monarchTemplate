@@ -19,7 +19,9 @@
 			<%= form_for announcement, :html => {:class=> "announcement_ajax_ends_at"}, :url => {controller: "announcements", action: "announcement_ends_at", id: announcement.id }, :params => [:announcement], remote: true do |a| %>
 				<%= a.text_field :ends_at, :id => "message_#{announcement.id}_start_at", :class => "announcement_message_ends_at" %>
 			<% end %>
+			<% unless announcement.ends_at.blank? %>
 			<%= content_tag :li, Describe.new(Announcement).ends_at(announcement.id), class: "ends_at_date at_date #{check_if_draft(announcement)}", id: "message_#{announcement.id}_ends_at_text"  %>
+			<% end %>
 
 		</div>
 		

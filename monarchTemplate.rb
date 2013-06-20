@@ -36,6 +36,7 @@ run "cp ~/sites/startup_template/gitignore_file ~/sites/#{@app_name}/.gitignore"
   gem "mini_magick"
   gem 'fog'
 
+
 	run 'bundle install'
 
 ## works ##
@@ -637,8 +638,14 @@ run "cp ~/sites/startup_template/app/views/users/index.html.erb ~/sites/#{@app_n
 run "cp ~/sites/startup_template/app/views/users/update.js.erb ~/sites/#{@app_name}/app/views/users/update.js.erb"
 
 ###############
+## lib ##
+###############
+run "cp ~/sites/startup_template/lib/arrays.rb ~/sites/#{@app_name}/lib/arrays.rb"
+
+###############
 ## lib/tasks ##
 ###############
+
 run "cp ~/sites/startup_template/lib/tasks/create_links.rake ~/sites/#{@app_name}/lib/tasks/create_links.rake"
 run "cp ~/sites/startup_template/lib/tasks/create_monarchAdmins.rake ~/sites/#{@app_name}/lib/tasks/create_monarchAdmins.rake"
 run "cp ~/sites/startup_template/lib/tasks/create_roles.rake ~/sites/#{@app_name}/lib/tasks/create_roles.rake"

@@ -25,7 +25,7 @@ module ApplicationHelper
         Supermodel.create(name: m, visible: false)
       end
     end
-    client_models = ["Role", "Page", "Announcement", "Profile", "Blog", "Event", "Partial", "Link"]
+    client_models = ["Role", "Page", "Announcement", "Profile", "Blog", "Event", "Partial"]
     client_models.each do |cm|
       instance = Supermodel.find_by_name(cm)
       instance.update_attributes(visible: true)
@@ -42,6 +42,28 @@ module ApplicationHelper
 
   def current_status(id)
     Status.find(id).status_name
+  end
+
+  def reset_current_state(model)
+    scheduled = Status.find_by_status_name("scheduled").id
+    published = Status.find_by_status_name("published").id
+    draft = Status.find_by_status_name("draft").id
+    anns = Describe.new(model).partial
+    anns.each do |a|
+      if !a.starts_at.blank? && a.starts_at <= Date.today
+        a.update_attributes(current_state: published)
+      elsif !a.starts_at.blank? && a.starts_at > Date.today
+        a.update_attributes(current_state: scheduled)
+      end
+      
+      if !a.ends_at.blank? && a.ends_at <= Date.today-1
+        a.update_attributes(current_state: draft)
+      end
+
+      if a.starts_at.blank?
+        a.update_attributes(current_state: draft)
+      end
+    end
   end
 
 # ###################### END Stock Methods END #######################
